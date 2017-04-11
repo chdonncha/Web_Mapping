@@ -79,16 +79,16 @@ WSGI_APPLICATION = 'wmap2017.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databasesmigrate
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'wmapdb',
-        'USER': 'wmap',
-        'PASSWORD': 'markfoley',
-        'HOST': 'wmap2017.cqoqcqsrqcb1.eu-west-1.rds.amazonaws.com',
-        'PORT': '5432',
+        'USER': 'donncha',
+        'PASSWORD': 'pass123',
+        'HOST': 'localhost',
+        'PORT': '5433',
     }
 }
 

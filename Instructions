@@ -1,0 +1,40 @@
+To install on Linux
+------------------------
+
+Install pycharm:
+
+http://ubuntuhandbook.org/index.php/2016/07/latest-pycharm-ubuntu-16-04-ppa/
+
+
+Install postgres
+Install postgis
+
+Create a new database (in terminal):
+
+createdb <dbname>
+
+
+Create a new virtual environment in pycharm django project and make in python 3.5
+
+In the project click tools:
+
+Run manage.py task
+
+and run the following the new console:
+
+startapp world
+
+
+For setting up db with pycharm:
+
+https://docs.djangoproject.com/en/1.10/ref/contrib/gis/tutorial/
+
+
+To run migrations (in manage py console):
+
+migrate
+
+to create new user: createsuperuser -- username <username>
+
+
+
