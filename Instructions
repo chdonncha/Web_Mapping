@@ -89,6 +89,12 @@ kill all docker processes:
 sudo docker stop $(sudo docker ps -a -q)
 
 
+run cordova on browser
+
+cordova platform add browser --save
+
+cordova run browser
+
 
 
 
