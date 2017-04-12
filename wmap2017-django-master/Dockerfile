@@ -14,6 +14,8 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
+RUN manage.py migrate
+
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir -r requirements.txt
 

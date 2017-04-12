@@ -42,3 +42,48 @@ To build a docker file
 sudo docker build -t project .
 
 
+to login to docker hub
+
+docker login
+
+
+to push to the project
+
+docker push chdonncha/webmapping_assignment
+
+
+To access the server
+
+ssh root@138.68.186.53
+username: root
+password: pass123
+
+
+to run docker on the server
+
+run docker chdonncha/webmapping_assignment -p 8000:80 project
+
+
+setup postgres on digital ocean server
+
+https://www.digitalocean.com/community/tutorials/how-to-install-and-use-postgresql-on-ubuntu-16-04
+
+
+create the postgres user:
+
+sudo -u postgres createuser --interactive
+
+
+allow user to login change peer to md5 using
+
+nano /etc/postgresql/9.5/main/pg_hba.conf
+
+
+then restart the psql server using:
+
+sudo service postgresql restart
+
+
+
+
+

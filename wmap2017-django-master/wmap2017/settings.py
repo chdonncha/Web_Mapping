@@ -81,14 +81,25 @@ WSGI_APPLICATION = 'wmap2017.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databasesmigrate
 
+# DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+#        'NAME': 'wmapdb',
+#        'USER': 'donncha',
+#        'PASSWORD': 'pass123',
+#        'HOST': 'localhost',
+#        'PORT': '5433',
+#    }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'wmapdb',
         'USER': 'donncha',
         'PASSWORD': 'pass123',
-        'HOST': 'localhost',
-        'PORT': '5433',
+        'HOST': '138.68.186.53',
+        'PORT': '5432',
     }
 }
 
