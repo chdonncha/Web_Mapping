@@ -37,4 +37,8 @@ migrate
 to create new user: createsuperuser -- username <username>
 
 
+To build a docker file
+
+sudo docker build -t project .
+
 
