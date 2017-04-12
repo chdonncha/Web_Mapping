@@ -84,6 +84,11 @@ then restart the psql server using:
 sudo service postgresql restart
 
 
+kill all docker processes:
+
+sudo docker stop $(sudo docker ps -a -q)
+
+
 
 
 
