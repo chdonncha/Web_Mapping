@@ -47,21 +47,23 @@ to login to docker hub
 docker login
 
 
-to push to the project
+to push/pull to the project
 
-docker push chdonncha/webmapping_assignment
+sudo docker push chdonncha/webmapping_assignment
+sudo docker pull chdonncha/webmapping_assignment
 
 
 To access the server
 
 ssh root@138.68.186.53
+
 username: root
 password: pass123
 
 
 to run docker on the server
 
-run docker chdonncha/webmapping_assignment -p 8000:80 project
+docker run -p 8000:80 chdonncha/webmapping_assignment
 
 
 setup postgres on digital ocean server
