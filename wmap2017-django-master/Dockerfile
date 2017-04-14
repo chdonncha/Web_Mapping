@@ -14,12 +14,20 @@ COPY . /usr/src/app
 
 WORKDIR /usr/src/app
 
-#RUN manage.py migrate
-
 RUN pip install --upgrade pip
+RUN pip install django
+RUN pip install django_extensions django-leaflet psycopg2
+RUN pip install djangorestframework djangorestframework-gis
+
+#RUN ./manage.py migrate
+
 RUN pip install --no-cache-dir -r requirements.txt
-RUN ls
+
+RUN chmod +x run.sh
 
 EXPOSE 8000
+
+CMD ["./run.sh"]
+
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-CMD ["bash", "-c", "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+#CMD ["bash", "-c", "python ./manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
