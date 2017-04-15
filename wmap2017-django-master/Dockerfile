@@ -24,7 +24,7 @@ RUN pip install djangorestframework djangorestframework-gis
 RUN pip install --no-cache-dir -r requirements.txt
 
 ENV PYTHONPATH "/bin/python"
-ENV DJANGO_SETTINGS_MODULE "DeliveryServices.settings"
+#ENV DJANGO_SETTINGS_MODULE "DeliveryServices.settings"
 
 RUN chmod +x run.sh
 
