@@ -39,7 +39,7 @@ to create new user: createsuperuser -- username <username>
 
 To build a docker file
 
-sudo docker build -t project .
+sudo docker build -t <userame+tag> .
 
 
 to login to docker hub
@@ -64,6 +64,8 @@ password: pass123
 to run docker on the server
 
 docker run -p 8000:80 chdonncha/webmapping_assignment
+
+docker run -t chdonncha/webmapping_assignment
 
 
 setup postgres on digital ocean server
@@ -97,6 +99,10 @@ cordova platform add browser --save
 
 cordova run browser
 
+
+restart psql
+
+sudo service postgresql restart
 
 
 

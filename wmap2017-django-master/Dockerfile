@@ -23,11 +23,14 @@ RUN pip install djangorestframework djangorestframework-gis
 
 RUN pip install --no-cache-dir -r requirements.txt
 
+ENV PYTHONPATH "/bin/python"
+ENV DJANGO_SETTINGS_MODULE "DeliveryServices.settings"
+
 RUN chmod +x run.sh
 
 EXPOSE 8000
 
-CMD ["./run.sh"]
+#CMD ["./run.sh"]
 
 #CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-#CMD ["bash", "-c", "python ./manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
+CMD ["bash", "-c", "python ./manage.py migrate && python manage.py runserver 0.0.0.0:8000"]
