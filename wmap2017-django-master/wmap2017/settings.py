@@ -87,7 +87,7 @@ DATABASES = {
        'NAME': 'wmapdb',
        'USER': 'donncha',
        'PASSWORD': 'pass123',
-       'HOST': '127.0.0.1',
+       'HOST': 'localhost',
        'PORT': '5433',
    }
 }

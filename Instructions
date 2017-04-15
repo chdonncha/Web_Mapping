@@ -63,7 +63,7 @@ password: pass123
 
 to run docker on the server
 
-docker run -p 8000:80 chdonncha/webmapping_assignment
+sudo docker run --net="host" -p 8000:80 chdonncha/webmapping_assignment
 
 docker run -t chdonncha/webmapping_assignment
 
