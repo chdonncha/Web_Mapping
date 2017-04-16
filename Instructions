@@ -55,7 +55,7 @@ sudo docker pull chdonncha/webmapping_assignment
 
 To access the server
 
-ssh root@138.68.186.53
+ssh root@138.68.138.186
 
 username: root
 password: pass123
@@ -103,6 +103,11 @@ cordova run browser
 restart psql
 
 sudo service postgresql restart
+
+
+port forward:
+
+https://www.digitalocean.com/community/tutorials/how-to-set-up-a-basic-iptables-firewall-on-centos-6
 
 
 

@@ -1,4 +1,4 @@
-var HOST = "http://138.186.53:8000";
+var HOST = "http://138.68.138.186:8000";
 
 var URLS = {
     login: "/rest/tokenlogin/",
