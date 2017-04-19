@@ -109,5 +109,7 @@ port forward:
 
 https://www.digitalocean.com/community/tutorials/how-to-set-up-a-basic-iptables-firewall-on-centos-6
 
+iptables -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+
 
 
