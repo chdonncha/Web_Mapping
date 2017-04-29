@@ -156,7 +156,7 @@ function updatePosition() {
                 lon: myPos.coords.longitude
             }
         }).done(function (data, status, xhr) {
-            showOkAlert("Position Updated");
+            //showOkAlert("Position Updated");
         }).fail(function (xhr, status, error) {
             var message = "Position Update Failed\n";
             if ((!xhr.status) && (!navigator.onLine)) {
