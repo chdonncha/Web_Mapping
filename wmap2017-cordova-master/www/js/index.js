@@ -26,6 +26,7 @@ function onDeviceReady() {
 
     $("#btn-login").on("touchstart", loginPressed);
     $("#sp-logout").on("touchstart", logoutPressed);
+    $("#btn-mapusername").on("touchstart", showUserLocation);
 
     if (localStorage.lastUserName && localStorage.lastUserPwd) {
         $("#in-username").val(localStorage.lastUserName);
@@ -107,6 +108,11 @@ function logoutPressed() {
 
 function showOkAlert(message) {
     navigator.notification.alert(message, null, "WMAP 2017", "OK");
+}
+
+function showUserLocation() {
+    username: $("#in-username").val()
+    //showOkAlert("Map User button worked!");
 }
 
 function getCurrentlocation() {
@@ -191,10 +197,22 @@ function myGeoPosition(p) {
     this.timestamp = (p.timestamp) ? p.timestamp : new Date().getTime();
 }
 
+// function updateTest() {
+//     $.ajax({
+//             type: "GET",
+//             headers: {"Authorization": localStorage.authtoken},
+//             url: HOST + URLS["userme"]
+//         }).done(function (data, status, xhr) {
+//             $(".sp-username").html(xhr.responseJSON.properties.username);
+//         }).fail(function (xhr, status, error) {
+//             $(".sp-username").html("");
+//         });
+// }
+
 function setUserName() {
     console.log("In setUserName.");
     $.ajax({
-        type: "GET",
+        type: "PUT",
         headers: {"Authorization": localStorage.authtoken},
         url: HOST + URLS["userme"]
     }).done(function (data, status, xhr) {
