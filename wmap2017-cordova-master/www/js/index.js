@@ -209,15 +209,31 @@ function myGeoPosition(p) {
 //         });
 // }
 
+// function setUserName() {
+//     console.log("In setUserName.");
+//     $.ajax({
+//         type: "PATCH",
+//         headers: {"Authorization": localStorage.authtoken},
+//         url: HOST + URLS["userme"],
+//         data: JSON.stringify({first_name: "tester123"})
+//     }).done(function (data, status, xhr) {
+//         showOkAlert("success")
+//     }).fail(function (xhr, status, error) {
+//         showOkAlert("failure")
+//     });
+// }
+
 function setUserName() {
     console.log("In setUserName.");
     $.ajax({
-        type: "PUT",
+        type: "GET",
         headers: {"Authorization": localStorage.authtoken},
         url: HOST + URLS["userme"]
     }).done(function (data, status, xhr) {
-        $(".sp-username").html(xhr.responseJSON.properties.username);
+        $(".sp-username").html(xhr.responseJSON.properties.test);
+        showOkAlert("success")
     }).fail(function (xhr, status, error) {
         $(".sp-username").html("");
+        showOkAlert("failed")
     });
 }

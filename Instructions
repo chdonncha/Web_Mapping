@@ -40,6 +40,7 @@ to create new user: createsuperuser -- username <username>
 To build a docker file
 
 sudo docker build -t <userame+tag> .
+sudo docker build -t chdonncha/webmapping_assignment .
 
 
 to login to docker hub
