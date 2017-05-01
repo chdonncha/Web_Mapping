@@ -2,6 +2,7 @@ var HOST = "http://138.68.138.186:8000";
 
 var URLS = {
     login: "/rest/tokenlogin/",
+    signup: "/signup/",
     userme: "/rest/userme/",
     updateposition: "/rest/updateposition/"
 };
@@ -65,6 +66,10 @@ function onDeviceReady() {
     } else {
         $.mobile.navigate("#login-page");
     }
+}
+
+function register() {
+
 }
 
 function loginPressed() {
