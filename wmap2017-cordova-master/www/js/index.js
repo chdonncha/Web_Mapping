@@ -80,7 +80,22 @@ function register() {
             firstname: $("#in-reg-firstname").val(),
             lastname: $("#in-reg-lastname").val(),
             email: $("#in-reg-email").val(),
-        }
+        },
+        beforeSend: function (xhr) {
+            if (Cookies.get('csrftoken')) {
+                xhr.setRequestHeader(
+                    'X-CSRFToken',
+                    Cookies.get('csrftoken')
+                );
+            }
+            if (localStorage.token) {
+                xhr.setRequestHeader(
+                    'Authorization',
+                    localStorage.token
+                );
+            }
+        },
+        dataType: 'json'
     }).done(function (data, status, xhr) {
         //message += "Status: " + xhr.status + " " + xhr.responseText;
         showOkAlert("Success");
