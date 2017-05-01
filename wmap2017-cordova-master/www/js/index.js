@@ -79,9 +79,13 @@ function register() {
             confpassword: $("#in-reg-confpassword").val(),
             firstname: $("#in-reg-firstname").val(),
             lastname: $("#in-reg-lastname").val(),
-            email: $("#in-reg-email").val()
+            email: $("#in-reg-email").val(),
         }
-    })
+    }).done(function (data, status, xhr) {
+        showOkAlert("Registration Complete")
+    }).fail(function (xhr, status, error) {
+        showOkAlert("Registration Failed")
+    });
 }
 
 function loginPressed() {
