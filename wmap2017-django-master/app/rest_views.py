@@ -70,7 +70,7 @@ class UpdatePosition(generics.UpdateAPIView):
         return super(UpdatePosition, self).dispatch(*args, **kwargs)
 
     def get_object(self):
-        return get_user_model().objects.get(email=self.request.user.email)
+        return get_user_model().objects.filter(email=self.request.user.email)
 
     def perform_update(self, serializer, **kwargs):
         try:

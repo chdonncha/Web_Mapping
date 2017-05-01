@@ -143,7 +143,7 @@ function getCurrentlocation() {
 
     navigator.geolocation.getCurrentPosition(
         function (pos) {
-            myLatLon = L.latLng(pos.coords.latitude, pos.coords.longitude);
+            //myLatLon = L.latLng(pos.coords.latitude, pos.coords.longitude);
             myPos = new myGeoPosition(pos);
             localStorage.lastKnownCurrentPosition = JSON.stringify(myPos);
 
