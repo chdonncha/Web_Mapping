@@ -74,12 +74,12 @@ function register() {
         type: "POST",
         url: HOST + URLS["signup"],
         data: {
-            id_username: $("#in-reg-username").val(),
-            id_password: $("#in-reg-password").val(),
-            id_password2: $("#in-reg-confpassword").val(),
-            id_firstname: $("#in-reg-firstname").val(),
-            id_lastname: $("#in-reg-lastname").val(),
-            id_email: $("#in-reg-email").val(),
+            username: $("#in-reg-username").val(),
+            password: $("#in-reg-password").val(),
+            password2: $("#in-reg-confpassword").val(),
+            first_name: $("#in-reg-firstname").val(),
+            last_name: $("#in-reg-lastname").val(),
+            email: $("#in-reg-email").val(),
         },
         beforeSend: function (xhr) {
             if (Cookies.get('csrftoken')) {
@@ -87,13 +87,16 @@ function register() {
                     'X-CSRFToken',
                     Cookies.get('csrftoken')
                 );
+                console.log(Cookies.get('csrftoken'));
             }
             if (localStorage.token) {
                 xhr.setRequestHeader(
                     'Authorization',
                     localStorage.token
                 );
+                console.log(localStorage.token);
             }
+            console.log(data);
         },
         dataType: 'json'
     }).done(function (data, status, xhr) {
