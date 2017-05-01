@@ -162,7 +162,7 @@ function updatePosition() {
                 lon: myPos.coords.longitude
             }
         }).done(function (data, status, xhr) {
-            //showOkAlert("Position Updated");
+            showOkAlert("Position Updated");
         }).fail(function (xhr, status, error) {
             var message = "Position Update Failed\n";
             if ((!xhr.status) && (!navigator.onLine)) {
@@ -230,10 +230,10 @@ function setUserName() {
         headers: {"Authorization": localStorage.authtoken},
         url: HOST + URLS["userme"]
     }).done(function (data, status, xhr) {
-        $(".sp-username").html(xhr.responseJSON.properties.test);
-        showOkAlert("success")
+        $(".sp-username").html(xhr.responseJSON.properties.username);
+        //showOkAlert("success")
     }).fail(function (xhr, status, error) {
         $(".sp-username").html("");
-        showOkAlert("failed")
+        //showOkAlert("failed")
     });
 }
