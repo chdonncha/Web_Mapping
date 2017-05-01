@@ -26,6 +26,7 @@ function onDeviceReady() {
     console.log("In onDeviceReady.");
 
     $("#btn-login").on("touchstart", loginPressed);
+    $("#btn-reg").on("touchstart", register);
     $("#sp-logout").on("touchstart", logoutPressed);
     $("#btn-mapusername").on("touchstart", showUserLocation);
 
@@ -69,7 +70,18 @@ function onDeviceReady() {
 }
 
 function register() {
-
+    $.ajax({
+        type: "POST",
+        url: HOST + URLS["signup"],
+        data: {
+            username: $("#in-reg-username").val(),
+            password: $("#in-reg-password").val(),
+            confpassword: $("#in-reg-confpassword").val(),
+            firstname: $("#in-reg-firstname").val(),
+            lastname: $("#in-reg-lastname").val(),
+            email: $("#in-reg-email").val()
+        }
+    })
 }
 
 function loginPressed() {
