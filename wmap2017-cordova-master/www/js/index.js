@@ -74,12 +74,12 @@ function register() {
         type: "POST",
         url: HOST + URLS["signup"],
         data: {
-            username: $("#in-reg-username").val(),
-            password: $("#in-reg-password").val(),
-            confpassword: $("#in-reg-confpassword").val(),
-            firstname: $("#in-reg-firstname").val(),
-            lastname: $("#in-reg-lastname").val(),
-            email: $("#in-reg-email").val(),
+            id_username: $("#in-reg-username").val(),
+            id_password: $("#in-reg-password").val(),
+            id_password2: $("#in-reg-confpassword").val(),
+            id_firstname: $("#in-reg-firstname").val(),
+            id_lastname: $("#in-reg-lastname").val(),
+            id_email: $("#in-reg-email").val(),
         },
         beforeSend: function (xhr) {
             if (Cookies.get('csrftoken')) {
@@ -263,16 +263,18 @@ function myGeoPosition(p) {
 // }
 
 function setUserName() {
-    console.log("In setUserName.");
-    $.ajax({
-        type: "GET",
-        headers: {"Authorization": localStorage.authtoken},
-        url: HOST + URLS["userme"]
-    }).done(function (data, status, xhr) {
-        $(".sp-username").html(xhr.responseJSON.properties.username);
-        //showOkAlert("success")
-    }).fail(function (xhr, status, error) {
-        $(".sp-username").html("");
-        //showOkAlert("failed")
-    });
+    console.log("Display Username = " + $(".sp-username"));
+    $(".sp-username").html(localStorage.lastUserName);
+    // console.log("In setUserName.");
+    // $.ajax({
+    //     type: "GET",
+    //     headers: {"Authorization": localStorage.authtoken},
+    //     url: HOST + URLS["userme"]
+    // }).done(function (data, status, xhr) {
+    //     $(".sp-username").html(xhr.responseJSON.properties.username);
+    //     //showOkAlert("success")
+    // }).fail(function (xhr, status, error) {
+    //     $(".sp-username").html("");
+    //     //showOkAlert("failed")
+    // });
 }
