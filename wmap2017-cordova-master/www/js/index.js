@@ -82,9 +82,12 @@ function register() {
             email: $("#in-reg-email").val(),
         }
     }).done(function (data, status, xhr) {
-        showOkAlert("Registration Complete")
+        //message += "Status: " + xhr.status + " " + xhr.responseText;
+        showOkAlert("Success");
     }).fail(function (xhr, status, error) {
-        showOkAlert("Registration Failed")
+        // message += "Status: " + xhr.status + " " + xhr.responseText;
+        // showOkAlert(message);
+        showOkAlert("Failure");
     });
 }
 
