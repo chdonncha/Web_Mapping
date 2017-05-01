@@ -71,8 +71,8 @@ function onDeviceReady() {
 
 function register() {
     $.ajax({
-        type: "POST",
         url: HOST + URLS["signup"],
+        type: "POST",
         data: {
             username: $("#in-reg-username").val(),
             password: $("#in-reg-password").val(),
@@ -89,14 +89,10 @@ function register() {
                 );
                 console.log(Cookies.get('csrftoken'));
             }
-            if (localStorage.token) {
-                xhr.setRequestHeader(
-                    'Authorization',
-                    localStorage.token
-                );
-                console.log(localStorage.token);
-            }
-            console.log(data);
+            console.log("username: " + $("#in-reg-username").val() + "\n" + "password " +
+                $("#in-reg-password").val() + "\n" + "password2: " + $("#in-reg-confpassword").val()
+                + "\n" + "firstname: " + $("#in-reg-firstname").val() + "\n" + "lastname: " +
+                $("#in-reg-lastname").val() + "\n" + "email: " + $("#in-reg-email").val());
         },
         dataType: 'json'
     }).done(function (data, status, xhr) {
