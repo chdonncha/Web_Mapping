@@ -154,7 +154,7 @@ function logoutPressed() {
 }
 
 function showOkAlert(message) {
-    navigator.notification.alert(message, null, "Friend Finder", "OK");
+    navigator.notification.alert(message, null, "WMAP 2017", "OK");
 }
 
 function showUserLocation() {
@@ -169,18 +169,13 @@ function showUserLocation() {
         console.log("user coodinates: " + xhr.responseJSON.geometry);
 
         var friendPos = (xhr.responseJSON.geometry);
-
-        if(friendPos.coordinates[0] == null) {
-            showOkAlert("user coordinates not set!")
-        } else {
-            var myLatLon = L.latLng(friendPos.coordinates[1], friendPos.coordinates[0]);
-            L.marker(myLatLon, {icon: otherIcon}).addTo(map);
-            map.flyTo(myLatLon, 15);
-            console.log(friendPos.coordinates[0]);
-        }
-
+        var myLatLon = L.latLng(friendPos.coordinates[1], friendPos.coordinates[0]);
+        L.marker(myLatLon, {icon: otherIcon}).addTo(map);
+        map.flyTo(myLatLon, 15);
     }).fail(function (xhr, status, error) {
-        showOkAlert("username does not exist!")
+        console.log("find user location failed");
+        //$(".sp-username").html("");
+        //showOkAlert("failed")
     });
 }
 
