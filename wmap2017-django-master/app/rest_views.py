@@ -61,7 +61,7 @@ class UserOther_R(generics.RetrieveAPIView):
 
 
 class UpdatePosition(generics.UpdateAPIView):
-    authentication_classes = (authentication.TokenAuthentication,)
+    authentication_classes = (authentication.TokenAuthentication, authentication.SessionAuthentication)
     permission_classes = (permissions.IsAuthenticated,)
     serializer_class = serializers.UserMeSerializer
 
@@ -76,18 +76,18 @@ class UpdatePosition(generics.UpdateAPIView):
         try:
             lat1 = float(self.request.data.get("lat", False))
             lon1 = float(self.request.data.get("lon", False))
-            lat2 = float(self.request.GET.get("lat", False))
-            lon2 = float(self.request.GET.get("lon", False))
-            if lat1 and lat2:
+            # lat2 = float(self.request.query_params.get("lat", False))
+            # lon2 = float(self.request.query_params.get("lon", False))
+            if lat1 and lon1:
                 point = Point(lon1, lat1)
-            elif lat2 and lon2:
-                point = Point(lon2, lat2)
+            # elif lat2 and lon2:
+            #     point = Point(lon2, lat2)
             else:
                 point = None
 
             if point:
-                serializer.instance.last_location = point
-                serializer.save()
+                # serializer.instance.last_location = point
+                serializer.save(last_location = point)
             return serializer
         except:
             pass
@@ -100,16 +100,16 @@ def token_login(request):
     if (not request.GET["username"]) or (not request.GET["password"]):
         return Response({"detail": "Missing username and/or password"}, status=status.HTTP_400_BAD_REQUEST)
 
-    user = authenticate(username=request.GET["username"], password=request.GET["password"])
-    if user:
-        if user.is_active:
-            login(request, user)
-            try:
-                my_token = Token.objects.get(user=user)
-                return Response({"token": "{}".format(my_token.key)}, status=status.HTTP_200_OK)
-            except Exception as e:
-                return Response({"detail": "Could not get token"})
-        else:
-            return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
+        user = authenticate(username=request.GET["username"], password=request.GET["password"])
+        if user:
+            if user.is_active:
+                login(request, user)
+                try:
+                    my_token = Token.objects.get(user=user)
+                    return Response({"token": "{}".format(my_token.key)}, status=status.HTTP_200_OK)
+                except Exception as e:
+                    return Response({"detail": "Could not get token"})
+            else:
+                return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({"detail": "Invalid User Id of Password"}, status=status.HTTP_400_BAD_REQUEST)
