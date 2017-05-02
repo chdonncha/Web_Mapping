@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="ie.dit.wmap2017" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>Web mapping 2017</name>
+    <name>Friend Finder</name>
     <description>
         A Cordova application to locate friends, as part of a Web Mapping module assignment
     </description>
