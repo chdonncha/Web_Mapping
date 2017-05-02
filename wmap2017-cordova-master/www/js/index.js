@@ -179,6 +179,7 @@ function getCurrentlocation() {
 function setMapToCurrentLocation() {
     console.log("In setMapToCurrentLocation.");
     if (localStorage.lastKnownCurrentPosition) {
+        console.log(localStorage.lastKnownCurrentPosition);
         var myPos = JSON.parse(localStorage.lastKnownCurrentPosition);
         var myLatLon = L.latLng(myPos.coords.latitude, myPos.coords.longitude);
         L.marker(myLatLon, {icon: curIcon}).addTo(map);
