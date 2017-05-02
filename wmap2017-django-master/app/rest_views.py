@@ -34,7 +34,7 @@ class UserMe_R(generics.RetrieveAPIView):
     serializer_class = serializers.UserMeSerializer
 
     def get_object(self):
-        return get_user_model().objects.get(email=self.request.user.email)
+        return get_user_model().objects.get(id=self.request.user.id)
 
 
 class UserOther_R(generics.RetrieveAPIView):
@@ -43,8 +43,8 @@ class UserOther_R(generics.RetrieveAPIView):
     def get_object(self):
         if "uid" in self.kwargs and self.kwargs["uid"]:
             users = get_user_model().objects.filter(id=self.kwargs["uid"])
-        elif "email" in self.kwargs and self.kwargs["email"]:
-            users = get_user_model().objects.filter(email=self.kwargs["email"])
+        elif "username" in self.kwargs and self.kwargs["username"]:
+            users = get_user_model().objects.filter(username=self.kwargs["username"])
         else:
             users = None
         if not users:

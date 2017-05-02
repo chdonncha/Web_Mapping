@@ -17,6 +17,14 @@ var curIcon = L.ExtraMarkers.icon({
     prefix: 'fa'
 });
 
+var otherIcon = L.ExtraMarkers.icon({
+    icon: 'fa-crosshairs',
+    iconColor: 'white',
+    markerColor: 'red',
+    shape: 'square',
+    prefix: 'fa'
+});
+
 function onLoad() {
     console.log("In onLoad.");
     document.addEventListener('deviceready', onDeviceReady, false);
@@ -73,6 +81,7 @@ function register() {
     $.ajax({
         url: HOST + URLS["signup"],
         type: "POST",
+        headers: {"Authorization": localStorage.authtoken},
         data: {
             username: $("#in-reg-username").val(),
             password: $("#in-reg-password").val(),
@@ -148,8 +157,25 @@ function showOkAlert(message) {
 }
 
 function showUserLocation() {
-    username: $("#in-username").val()
+    //username: $("#in-username").val()
     //showOkAlert("Map User button worked!");
+    console.log("show user location touched");
+    $.ajax({
+        type: "GET",
+        headers: {"Authorization": localStorage.authtoken},
+        url: HOST + URLS["userme"]
+    }).done(function (data, status, xhr) {
+        console.log("user coodinates: " + xhr.responseJSON.geometry);
+
+        var friendPos = (xhr.responseJSON.geometry);
+        var myLatLon = L.latLng(friendPos.coordinates[1], friendPos.coordinates[0]);
+        L.marker(myLatLon, {icon: otherIcon}).addTo(map);
+        map.flyTo(myLatLon, 15);
+    }).fail(function (xhr, status, error) {
+        console.log("find user location failed");
+        //$(".sp-username").html("");
+        //showOkAlert("failed")
+    });
 }
 
 function getCurrentlocation() {
@@ -236,18 +262,18 @@ function myGeoPosition(p) {
 }
 
 function setUserName() {
-    console.log("Display Username = " + $(".sp-username"));
-    $(".sp-username").html(localStorage.lastUserName);
-    // console.log("In setUserName.");
-    // $.ajax({
-    //     type: "GET",
-    //     headers: {"Authorization": localStorage.authtoken},
-    //     url: HOST + URLS["userme"]
-    // }).done(function (data, status, xhr) {
-    //     $(".sp-username").html(xhr.responseJSON.properties.username);
-    //     //showOkAlert("success")
-    // }).fail(function (xhr, status, error) {
-    //     $(".sp-username").html("");
-    //     //showOkAlert("failed")
-    // });
+    //console.log("Display Username = " + $(".sp-username"));
+    //$(".sp-username").html(localStorage.lastUserName);
+    console.log("In setUserName.");
+    $.ajax({
+        type: "GET",
+        headers: {"Authorization": localStorage.authtoken},
+        url: HOST + URLS["userme"]
+    }).done(function (data, status, xhr) {
+        $(".sp-username").html(xhr.responseJSON.properties.username);
+        //showOkAlert("success")
+    }).fail(function (xhr, status, error) {
+        $(".sp-username").html("");
+        //showOkAlert("failed")
+    });
 }
