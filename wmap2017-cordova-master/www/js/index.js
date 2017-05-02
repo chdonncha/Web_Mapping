@@ -82,13 +82,11 @@ function register() {
             email: $("#in-reg-email").val(),
         },
         beforeSend: function (xhr) {
-            if (Cookies.get('csrftoken')) {
                 xhr.setRequestHeader(
                     'X-CSRFToken',
                     Cookies.get('csrftoken')
                 );
-                console.log(Cookies.get('csrftoken'));
-            }
+
             console.log("username: " + $("#in-reg-username").val() + "\n" + "password " +
                 $("#in-reg-password").val() + "\n" + "password2: " + $("#in-reg-confpassword").val()
                 + "\n" + "firstname: " + $("#in-reg-firstname").val() + "\n" + "lastname: " +
@@ -106,6 +104,7 @@ function register() {
 }
 
 function loginPressed() {
+    console.log("login pressed");
     $.ajax({
         type: "GET",
         url: HOST + URLS["login"],

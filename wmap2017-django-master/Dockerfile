@@ -18,6 +18,7 @@ RUN pip install --upgrade pip
 RUN pip install django
 RUN pip install django_extensions django-leaflet psycopg2
 RUN pip install djangorestframework djangorestframework-gis
+RUN pip install django-cors-headers
 
 #RUN ./manage.py migrate
 
