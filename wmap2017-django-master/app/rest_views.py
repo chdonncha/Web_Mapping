@@ -100,16 +100,16 @@ def token_login(request):
     if (not request.GET["username"]) or (not request.GET["password"]):
         return Response({"detail": "Missing username and/or password"}, status=status.HTTP_400_BAD_REQUEST)
 
-        user = authenticate(username=request.GET["username"], password=request.GET["password"])
-        if user:
-            if user.is_active:
-                login(request, user)
-                try:
-                    my_token = Token.objects.get(user=user)
-                    return Response({"token": "{}".format(my_token.key)}, status=status.HTTP_200_OK)
-                except Exception as e:
-                    return Response({"detail": "Could not get token"})
-            else:
-                return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
+    user = authenticate(username=request.GET["username"], password=request.GET["password"])
+    if user:
+        if user.is_active:
+            login(request, user)
+            try:
+                my_token = Token.objects.get(user=user)
+                return Response({"token": "{}".format(my_token.key)}, status=status.HTTP_200_OK)
+            except Exception as e:
+                return Response({"detail": "Could not get token"})
+        else:
+            return Response({"detail": "Inactive account"}, status=status.HTTP_400_BAD_REQUEST)
     else:
         return Response({"detail": "Invalid User Id of Password"}, status=status.HTTP_400_BAD_REQUEST)
