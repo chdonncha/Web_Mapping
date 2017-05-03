@@ -90,17 +90,15 @@ function register() {
             first_name: $("#in-reg-firstname").val(),
             last_name: $("#in-reg-lastname").val(),
             email: $("#in-reg-email").val(),
+
         },
         beforeSend: function (xhr) {
+            if (Cookies.get('csrftoken')) {
                 xhr.setRequestHeader(
                     'X-CSRFToken',
                     Cookies.get('csrftoken')
                 );
-
-            console.log("username: " + $("#in-reg-username").val() + "\n" + "password " +
-                $("#in-reg-password").val() + "\n" + "password2: " + $("#in-reg-confpassword").val()
-                + "\n" + "firstname: " + $("#in-reg-firstname").val() + "\n" + "lastname: " +
-                $("#in-reg-lastname").val() + "\n" + "email: " + $("#in-reg-email").val());
+            }
         },
         dataType: 'json'
     }).done(function (data, status, xhr) {

@@ -21,7 +21,7 @@ def logout_view(request):
 
 @login_required
 def landing(request):
-    return render(request, 'app/landing.html')
+    return render(request, 'app/user_profile.html')
 
 
 def login_view(request):
