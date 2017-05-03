@@ -89,10 +89,10 @@ function showUserProfile() {
         headers: {"Authorization": localStorage.authtoken},
         url: HOST + URLS["userme"]
     }).done(function (data, status, xhr) {
-        $(".label-profile-username").html(xhr.responseJSON.properties.username);
-        $(".label-profile-firstname").html(xhr.responseJSON.properties.username);
-        $(".label-profile-lastname").html(xhr.responseJSON.properties.username);
-        $(".label-profile-email").html(xhr.responseJSON.properties.username);
+        $(".label-profile-username").html("Username: " + xhr.responseJSON.properties.username);
+        $(".label-profile-firstname").html("Firstname: " + xhr.responseJSON.properties.first_name);
+        $(".label-profile-lastname").html("Lastname: " + xhr.responseJSON.properties.last_name);
+        $(".label-profile-email").html("Email: " + xhr.responseJSON.properties.email);
         //showOkAlert("success")
     }).fail(function (xhr, status, error) {
         //$(".sp-username").html("");
