@@ -94,6 +94,8 @@ function showUserProfile() {
         $(".label-profile-firstname").html("Firstname: " + xhr.responseJSON.properties.first_name);
         $(".label-profile-lastname").html("Lastname: " + xhr.responseJSON.properties.last_name);
         $(".label-profile-email").html("Email: " + xhr.responseJSON.properties.email);
+        var c_date = xhr.responseJSON.properties.date_joined;
+        $(".label-profile-created").html("Created: " + c_date.substring(0,10))
         //showOkAlert("success")
     }).fail(function (xhr, status, error) {
         //$(".sp-username").html("");

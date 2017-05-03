@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Security-Policy"
               content="default-src 'self' data: gap: https://ssl.gstatic.com
                   http://127.0.0.1:8000 http://localhost:8000
-                  http://138.68.138.186:8000
+                  http://138.68.138.186:8000 http://138.68.138.186
                   https://*.tile.openstreetmap.org https://*.tile.osm.org
                   http://*.tile.openstreetmap.org http://*.tile.osm.org
                   'unsafe-eval';
@@ -165,14 +165,15 @@
          style="align-content: center; background-color: white">
             <form role="form">
             <div class="ui-field-contain">
-                <label class="label-profile-username">Username: </label>
-                <label class="label-profile-firstname">FirstName: </label>
-                <label class="label-profile-lastname">LastName: </label>
-                <label class="label-profile-email">Email: </label>
+                <label class="label-profile-username"></label>
+                <label class="label-profile-firstname"></label>
+                <label class="label-profile-lastname"></label>
+                <label class="label-profile-email"></label>
+                <label class="label-profile-created"></label>
             </div>
                 <button id="btn-backtomap" type="button" class="ui-btn ui-corner-all live-button"
                     style="background-color: #669966; color: white;">
-                <span class="fa fa-plus fa-lg"></span> Back
+                <span class="fa fa-arrow-left fa-lg"></span> Back
             </button>
         </form>
     </div>
