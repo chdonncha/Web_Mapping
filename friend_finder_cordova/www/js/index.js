@@ -38,6 +38,7 @@ function onDeviceReady() {
     $("#btn-reg").on("touchstart", register);
     $("#sp-logout").on("touchstart", logoutPressed);
     $("#btn-mapusername").on("touchstart", showUserLocation);
+    $("#sp-userprofile").on("touchstart", showUserProfile);
 
     if (localStorage.lastUserName && localStorage.lastUserPwd) {
         $("#in-username").val(localStorage.lastUserName);
@@ -76,6 +77,28 @@ function onDeviceReady() {
     } else {
         $.mobile.navigate("#login-page");
     }
+}
+
+function showUserProfile() {
+    //showOkAlert("worked!");
+    $.mobile.navigate("#userprofile-page");
+
+    console.log("In setUserName.");
+    $.ajax({
+        type: "GET",
+        headers: {"Authorization": localStorage.authtoken},
+        url: HOST + URLS["userme"]
+    }).done(function (data, status, xhr) {
+        $(".label-profile-username").html(xhr.responseJSON.properties.username);
+        $(".label-profile-firstname").html(xhr.responseJSON.properties.username);
+        $(".label-profile-lastname").html(xhr.responseJSON.properties.username);
+        $(".label-profile-email").html(xhr.responseJSON.properties.username);
+        //showOkAlert("success")
+    }).fail(function (xhr, status, error) {
+        //$(".sp-username").html("");
+        showOkAlert("failed to connect, try again!")
+    });
+
 }
 
 function register() {
