@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404, render, redirect, render_to_response
 from django.core.urlresolvers import reverse
 from django.utils.decorators import method_decorator
+from django.views.decorators.csrf import csrf_exempt, ensure_csrf_cookie
 
 from django.forms import ValidationError
 from django.views.generic import TemplateView
@@ -21,7 +22,7 @@ def logout_view(request):
 
 @login_required
 def landing(request):
-    return render(request, 'app/user_profile.html')
+    return render(request, 'app/landing.html')
 
 
 def login_view(request):
@@ -40,7 +41,7 @@ def login_view(request):
             if user:
                 if user.is_active:
                     login(request, user)
-                    return redirect(reverse('app:landing'))
+                    return redirect(reverse('app:userprofile'))
                 else:
                     form.add_error(None, ValidationError(
                         "Your account is not active."
@@ -56,7 +57,7 @@ def login_view(request):
 
     return render(request, 'app/login.html', {'form': form})
 
-
+@method_decorator(csrf_exempt)
 def signup_view(request):
     if request.POST:
         form = forms.SignupForm(request.POST)

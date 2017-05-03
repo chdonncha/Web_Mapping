@@ -39,6 +39,7 @@ function onDeviceReady() {
     $("#sp-logout").on("touchstart", logoutPressed);
     $("#btn-mapusername").on("touchstart", showUserLocation);
     $("#sp-userprofile").on("touchstart", showUserProfile);
+    $("#btn-backtomap").on("touchstart", showMap);
 
     if (localStorage.lastUserName && localStorage.lastUserPwd) {
         $("#in-username").val(localStorage.lastUserName);
@@ -101,36 +102,36 @@ function showUserProfile() {
 
 }
 
+function showMap() {
+    if (localStorage.authtoken) {
+        $.mobile.navigate("#map-page");
+    } else {
+        $.mobile.navigate("#login-page");
+    }
+}
+
 function register() {
+
     $.ajax({
         url: HOST + URLS["signup"],
         type: "POST",
-        headers: {"Authorization": localStorage.authtoken},
         data: {
             username: $("#in-reg-username").val(),
             password: $("#in-reg-password").val(),
             password2: $("#in-reg-confpassword").val(),
             first_name: $("#in-reg-firstname").val(),
             last_name: $("#in-reg-lastname").val(),
-            email: $("#in-reg-email").val(),
-
+            email: $("#in-reg-email").val()
         },
-        beforeSend: function (xhr) {
-            if (Cookies.get('csrftoken')) {
-                xhr.setRequestHeader(
-                    'X-CSRFToken',
-                    Cookies.get('csrftoken')
-                );
-            }
-        },
-        dataType: 'json'
     }).done(function (data, status, xhr) {
         //message += "Status: " + xhr.status + " " + xhr.responseText;
         showOkAlert("Success");
+        console.log(data);
     }).fail(function (xhr, status, error) {
         // message += "Status: " + xhr.status + " " + xhr.responseText;
         // showOkAlert(message);
         showOkAlert("Failure");
+
     });
 }
 
