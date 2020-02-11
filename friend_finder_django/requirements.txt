@@ -1,4 +1,4 @@
-Django==1.10.5
+Django==1.11.28
 django-extensions==1.7.6
 django-geojson==2.9.1
 django-leaflet==0.20.0
